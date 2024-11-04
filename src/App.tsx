@@ -1,13 +1,11 @@
-import { Header, Container, Button } from "components";
+import { Container,Header } from "components";
 
 function App() {
   return (
     <>
       <Header />
       <main id="top">
-        <Container>
-          <Button>penis</Button>
-        </Container>
+        <Container>Test</Container>
       </main>
     </>
   );

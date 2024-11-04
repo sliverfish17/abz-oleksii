@@ -1,9 +1,8 @@
-import { Container } from "components";
-import styles from "./Header.module.scss";
-
 import Logo from "assets/icons/logo.svg";
-import { HeaderLink } from "./HeaderLink";
+import { Container } from "components";
 
+import styles from "./Header.module.scss";
+import { HeaderLink } from "./HeaderLink";
 const HEADER_NAV_LINKS = [
   { label: "Users", path: "#users" },
   { label: "Sign up", path: "#sign-up" },
