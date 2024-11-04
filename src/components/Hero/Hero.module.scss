@@ -1,0 +1,59 @@
+@use "styles/base/colors" as colors;
+@use "styles/mixins/responsive" as mixins;
+@use "styles/mixins/font" as text;
+
+.hero {
+  @include mixins.sm {
+    width: 100dvw;
+    margin-left: -16px;
+  }
+
+  &__container {
+    position: relative;
+    height: 650px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include mixins.sm {
+      max-height: 500px;
+    }
+  }
+
+  &__banner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
+
+  &__content {
+    color: colors.$white;
+    z-index: 10;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    max-width: 380px;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
+  &__title {
+    @include text.text-l;
+    margin-bottom: 21px;
+  }
+
+  &__description {
+    margin-bottom: 32px;
+  }
+}

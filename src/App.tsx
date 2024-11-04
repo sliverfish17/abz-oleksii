@@ -1,11 +1,13 @@
-import { Container,Header } from "components";
+import { Container, Header, Hero } from "components";
 
 function App() {
   return (
     <>
       <Header />
       <main id="top">
-        <Container>Test</Container>
+        <Container>
+          <Hero />
+        </Container>
       </main>
     </>
   );
