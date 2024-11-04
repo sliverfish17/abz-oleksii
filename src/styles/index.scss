@@ -1,5 +1,10 @@
-@use "./base/index.scss";
+@use "./base/index.scss" as base;
+@use "./mixins/index.scss" as mixins;
 
 body {
   font-family: "Nunito", sans-serif;
+}
+
+main {
+  padding-top: 60px;
 }

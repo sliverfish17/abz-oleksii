@@ -1,0 +1,21 @@
+@mixin font-size($font-size, $line-height: normal) {
+  font-size: $font-size * 1px;
+
+  @if $line-height == normal {
+    line-height: normal;
+  } @else {
+    line-height: $line-height * 1px;
+  }
+}
+
+@mixin text-s {
+  @include font-size(16, 26);
+}
+
+@mixin text-m {
+  @include font-size(22, 28);
+}
+
+@mixin text-l {
+  @include font-size(40, 40);
+}

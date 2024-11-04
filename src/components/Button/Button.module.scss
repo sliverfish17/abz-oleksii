@@ -1,0 +1,21 @@
+@use "styles/base/colors" as colors;
+@use "styles/mixins/font" as mixins;
+
+.button {
+  padding: 4px 23px;
+  border-radius: 80px;
+  background-color: colors.$main;
+  transition: background-color 0.3s ease-in;
+  color: colors.$text;
+
+  @include mixins.text-s;
+
+  &:hover {
+    background-color: colors.$main-hover;
+  }
+
+  &:disabled {
+    background-color: colors.$disabled;
+    color: colors.$text-disabled;
+  }
+}

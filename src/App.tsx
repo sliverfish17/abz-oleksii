@@ -1,7 +1,16 @@
-import "./App.scss";
+import { Header, Container, Button } from "components";
 
 function App() {
-  return <div className="App">Hello world!</div>;
+  return (
+    <>
+      <Header />
+      <main id="top">
+        <Container>
+          <Button>penis</Button>
+        </Container>
+      </main>
+    </>
+  );
 }
 
 export default App;
