@@ -1,0 +1,47 @@
+@use "styles/base/colors" as colors;
+@use "styles/mixins/responsive" as responsive;
+
+.users {
+  display: grid;
+  justify-content: center;
+  margin-bottom: 140px;
+
+  &__heading {
+    margin-bottom: 50px;
+    text-align: center;
+    color: colors.$text;
+  }
+
+  &__list {
+    display: grid;
+    margin-bottom: 50px;
+
+    @include responsive.xs {
+      grid-template-columns: repeat(1, 1fr);
+      gap: 20px;
+    }
+
+    @include responsive.sm {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @include responsive.md {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 29px;
+    }
+
+    @include responsive.lg {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 29px;
+    }
+  }
+
+  &__button {
+    margin: 0 auto;
+  }
+
+  &__loader {
+    margin: 0 auto;
+  }
+}

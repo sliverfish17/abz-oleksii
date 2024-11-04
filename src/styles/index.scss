@@ -1,12 +1,14 @@
 @use "./base/index.scss" as base;
 @use "./base/colors" as colors;
 @use "./mixins/index.scss" as mixins;
+@use "styles/mixins/font" as text;
 
 body {
   font-family: "Nunito", sans-serif;
+  background: colors.$bg;
 }
 
 main {
+  @include text.text-s;
   padding-top: 60px;
-  background: colors.$bg;
 }

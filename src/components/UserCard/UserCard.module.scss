@@ -1,0 +1,61 @@
+@use "styles/base/colors" as colors;
+@use "styles/mixins/responsive" as responsive;
+@use "styles/mixins/font" as text;
+
+.card {
+  height: 254px;
+  background: colors.$white;
+  color: colors.$text;
+  padding: 20px;
+  border-radius: 10px;
+  display: grid;
+  justify-items: center;
+  gap: 20px;
+
+  @include responsive.xs {
+    max-width: 100%;
+  }
+
+  @include responsive.sm {
+    max-width: 344px;
+  }
+
+  @include responsive.md {
+    max-width: 282px;
+  }
+
+  @include responsive.lg {
+    max-width: 370px;
+  }
+
+  &__info {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-width: 0;
+  }
+
+  &__name,
+  &__position,
+  &__email,
+  &__phone {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    width: 100%;
+  }
+
+  &__name {
+    font-weight: 400;
+    text-align: center;
+  }
+
+  &__photo {
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+  }
+}

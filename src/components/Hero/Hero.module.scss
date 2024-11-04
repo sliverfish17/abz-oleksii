@@ -1,9 +1,11 @@
 @use "styles/base/colors" as colors;
-@use "styles/mixins/responsive" as mixins;
+@use "styles/mixins/responsive" as responsive;
 @use "styles/mixins/font" as text;
 
 .hero {
-  @include mixins.sm {
+  margin-bottom: 190px;
+
+  @include responsive.sm {
     width: 100dvw;
     margin-left: -16px;
   }
@@ -15,7 +17,7 @@
     align-items: center;
     justify-content: center;
 
-    @include mixins.sm {
+    @include responsive.sm {
       max-height: 500px;
     }
   }
@@ -49,7 +51,6 @@
   }
 
   &__title {
-    @include text.text-l;
     margin-bottom: 21px;
   }
 

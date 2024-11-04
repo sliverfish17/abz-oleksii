@@ -1,12 +1,13 @@
-import { Container, Header, Hero } from "components";
+import { Container, Header, Hero, Users } from "components";
 
 function App() {
   return (
     <>
       <Header />
-      <main id="top">
+      <main id="home">
         <Container>
           <Hero />
+          <Users />
         </Container>
       </main>
     </>

@@ -7,7 +7,7 @@
 }
 
 @mixin sm {
-  @media (min-width: 0px) and (max-width: $breakpoint-md) {
+  @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
     @content;
   }
 }

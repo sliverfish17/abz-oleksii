@@ -1,0 +1,5 @@
+@use "styles/mixins/font" as mixins;
+
+.heading {
+  @include mixins.text-l;
+}
