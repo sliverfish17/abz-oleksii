@@ -1,0 +1,19 @@
+.registration {
+  &__form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+
+  &__heading {
+    margin-bottom: 50px;
+    text-align: center;
+  }
+
+  &__submit {
+    margin: 0 auto;
+  }
+}

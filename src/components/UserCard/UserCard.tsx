@@ -1,6 +1,7 @@
-import { IUser } from "types/User";
-import styles from "./UserCard.module.scss";
 import fallbackImage from "assets/icons/user-fallback.svg";
+import { IUser } from "types/User";
+
+import styles from "./UserCard.module.scss";
 
 // TODO add custom tooltip
 
@@ -14,7 +15,7 @@ export const UserCard = ({ name, email, position, photo, phone }: IUser) => (
       onError={(e) => {
         (e.target as HTMLImageElement).src = fallbackImage;
       }}
-      alt={`${name}'s photo`}
+      alt={`${name}'s profile image`}
     />
     <h3 className={styles.card__name} title={name}>
       {name}

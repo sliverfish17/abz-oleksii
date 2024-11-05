@@ -1,18 +1,20 @@
-import Logo from "assets/icons/logo.svg";
-import { Container } from "components";
+import Logo from 'assets/icons/logo.svg';
+import { Container } from 'components';
+import { AnchorLinks } from 'types/AnchorLinks';
 
-import styles from "./Header.module.scss";
-import { HeaderLink } from "./HeaderLink";
+import styles from './Header.module.scss';
+import { HeaderLink } from './HeaderLink';
+
 const HEADER_NAV_LINKS = [
-  { label: "Users", path: "#users" },
-  { label: "Sign up", path: "#sign-up" },
+  { label: 'Users', path: AnchorLinks.USERS },
+  { label: 'Sign up', path: AnchorLinks.SIGN_UP },
 ];
 
 export const Header = () => {
   return (
     <header className={styles.header}>
       <Container className={styles.header__content}>
-        <a href="#home">
+        <a href={AnchorLinks.HOME}>
           <img src={Logo} alt="Logo" />
         </a>
         <nav className={styles.header__navigation}>

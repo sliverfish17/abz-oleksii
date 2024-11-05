@@ -1,0 +1,65 @@
+@use 'styles/base/colors' as colors;
+
+.input {
+  margin-bottom: 20px;
+  width: 328px;
+
+  &__wrapper {
+    position: relative;
+    border: 1px solid colors.$outline;
+    border-radius: 4px;
+    padding: 14px 16px;
+    transition: border-color 0.3s ease;
+
+    &--error {
+      border-color: colors.$error;
+    }
+  }
+
+  &__label {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    background: colors.$bg;
+    padding: 0 4px;
+    font-size: 16px;
+    color: colors.$input;
+    transition: all 0.3s ease-in;
+    pointer-events: none;
+  }
+
+  &__field {
+    width: 100%;
+    font-size: 16px;
+    outline: none;
+    border: none;
+    background: transparent;
+
+    &:focus + .input__label,
+    &:not(:placeholder-shown) + .input__label {
+      top: -2px;
+      left: 14px;
+      font-size: 12px;
+      font-weight: 14px;
+      color: colors.$input;
+    }
+
+    &--error:focus + .input__label,
+    &--error:not(:placeholder-shown) + .input__label {
+      color: colors.$error;
+    }
+  }
+
+  &__helper {
+    margin-top: 4px;
+    font-size: 12px;
+    color: colors.$input;
+  }
+
+  &__error {
+    margin-top: 4px;
+    font-size: 12px;
+    color: colors.$error;
+  }
+}

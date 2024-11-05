@@ -1,13 +1,13 @@
-import { Button } from "components/Button/Button";
-import { Heading } from "components/Heading/Heading";
-import { Loader } from "components/Loader/Loader";
-import { UserCard } from "components/UserCard/UserCard";
-import { useEffect, useState, useCallback } from "react";
-import { IApiResponse } from "types/Api";
-import { IUser } from "types/User";
-import { httpClient } from "utils/http-client";
+import { Heading } from 'components/Heading/Heading';
+import { Loader } from 'components/Loader/Loader';
+import { Button } from 'components/UI/Button/Button';
+import { UserCard } from 'components/UserCard/UserCard';
+import { useCallback, useEffect, useState } from 'react';
+import { IApiResponse } from 'types/Api';
+import { IUser } from 'types/User';
+import { httpClient } from 'utils/http-client';
 
-import styles from "./Users.module.scss";
+import styles from './Users.module.scss';
 
 const COUNT = 6;
 
@@ -24,15 +24,16 @@ export const Users = () => {
   const fetchUsers = useCallback(async (pageNum: number) => {
     setIsLoading(true);
     try {
-      const { users: newUsers, total_pages } =
-        await httpClient.get<IUserResponse>(
-          `/users?page=${pageNum}&count=${COUNT}`
-        );
+      const url = new URLSearchParams({ page: String(pageNum), count: String(COUNT) });
+
+      const { users: newUsers, total_pages } = await httpClient.get<IUserResponse>(
+        '/users?' + url.toString(),
+      );
 
       setUsers((prevUsers) => [...prevUsers, ...newUsers]);
       setHasMore(pageNum < total_pages);
     } catch (error) {
-      console.error("Error fetching users:", error);
+      console.error('Error fetching users:', error);
     } finally {
       setIsLoading(false);
     }
