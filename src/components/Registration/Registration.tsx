@@ -28,16 +28,20 @@ export const Registration = () => {
   }, []);
 
   if (isLoading) return <Loader />;
+
   if (!positions.length)
     return (
-      <Heading className={styles.registration__fallback}>
-        Currently we don&apos;t have any positions!
-      </Heading>
+      <section id="sign-up">
+        <Heading className={styles.registration__fallback}>
+          Currently we don&apos;t have any positions!
+        </Heading>
+      </section>
     );
+
   if (isSuccess) return <SuccessMessage />;
 
   return (
-    <section className={styles.registration}>
+    <section id="sign-up" className={styles.registration}>
       <Heading className={styles.registration__heading}>Working with POST request</Heading>
       <RegistrationForm
         positions={positions}

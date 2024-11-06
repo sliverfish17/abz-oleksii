@@ -1,5 +1,5 @@
-@use "styles/base/colors" as colors;
-@use "styles/mixins/font" as mixins;
+@use 'styles/base/colors' as colors;
+@use 'styles/mixins/font' as mixins;
 
 .button {
   padding: 4px 23px;

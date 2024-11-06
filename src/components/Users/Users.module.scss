@@ -1,5 +1,5 @@
-@use "styles/base/colors" as colors;
-@use "styles/mixins/responsive" as responsive;
+@use 'styles/base/colors' as colors;
+@use 'styles/mixins/responsive' as responsive;
 
 .users {
   display: grid;

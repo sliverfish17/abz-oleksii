@@ -1,6 +1,6 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
-import styles from "./Container.module.scss";
+import styles from './Container.module.scss';
 
 interface IContainerProps {
   className?: string;
