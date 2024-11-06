@@ -26,7 +26,7 @@ export const RegistrationForm = ({
     setError,
     setValue,
     reset,
-    formState: { errors, touchedFields },
+    formState: { errors, touchedFields, isValid },
     watch,
   } = useForm<IRegistrationFormInputs>({
     defaultValues: { name: '', email: '', phone: '', position_id: positions[0]?.id, photo: null },
@@ -103,7 +103,7 @@ export const RegistrationForm = ({
         label="Upload your photo"
         error={errors.photo?.message || ''}
       />
-      <Button type="submit" className={styles.registration__submit}>
+      <Button disabled={!isValid} type="submit" className={styles.registration__submit}>
         Sign Up
       </Button>
     </form>
