@@ -26,6 +26,7 @@ export const RegistrationForm = ({
     setError,
     setValue,
     reset,
+    trigger,
     formState: { errors, touchedFields, isValid, isSubmitting },
     watch,
   } = useForm<IRegistrationFormInputs>({
@@ -35,7 +36,6 @@ export const RegistrationForm = ({
   });
 
   const positionId = Number(watch('position_id'));
-
   const onSubmit = async (data: IRegistrationFormInputs) => {
     try {
       const { token } = await httpClient.get<ITokenResponse>('/token');
@@ -106,6 +106,7 @@ export const RegistrationForm = ({
       <FileUpload
         register={register('photo')}
         label="Upload your photo"
+        trigger={trigger}
         error={errors.photo?.message || ''}
       />
       {isSubmitting ? (

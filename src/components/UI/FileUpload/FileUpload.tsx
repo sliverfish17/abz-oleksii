@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 import { InputHTMLAttributes } from 'react';
-import { UseFormRegisterReturn } from 'react-hook-form';
+import { UseFormRegisterReturn, UseFormTrigger } from 'react-hook-form';
+import { IRegistrationFormInputs } from 'types';
 
 import styles from './FileUpload.module.scss';
 
@@ -10,6 +11,7 @@ interface IFileUploadProps {
   register: UseFormRegisterReturn;
   multiple?: boolean;
   accept?: InputHTMLAttributes<HTMLInputElement>['accept'];
+  trigger: UseFormTrigger<IRegistrationFormInputs>;
 }
 
 export const FileUpload = ({
@@ -18,6 +20,7 @@ export const FileUpload = ({
   register,
   multiple = false,
   accept = 'image/jpeg,image/jpg',
+  trigger,
 }: IFileUploadProps) => {
   const [fileName, setFileName] = useState(label);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -33,6 +36,7 @@ export const FileUpload = ({
         value: files,
       },
     } as unknown as Event);
+    trigger('photo');
   };
 
   return (
