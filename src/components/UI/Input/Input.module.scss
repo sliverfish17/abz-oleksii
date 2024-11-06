@@ -13,9 +13,9 @@
     border: 1px solid colors.$outline;
     border-radius: 4px;
     padding: 13px 16px;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.2s ease;
 
-    &--error {
+    &Error {
       border-color: colors.$error;
     }
   }
@@ -29,8 +29,12 @@
     padding: 0 4px;
     font-size: 16px;
     color: colors.$input;
-    transition: all 0.3s ease-in;
+    transition: all 0.2s ease-in;
     pointer-events: none;
+
+    &Error {
+      color: colors.$error;
+    }
   }
 
   &__field {
@@ -49,8 +53,8 @@
       color: colors.$input;
     }
 
-    &--error:focus + .input__label,
-    &--error:not(:placeholder-shown) + .input__label {
+    &Error:focus + .input__label,
+    &Error:not(:placeholder-shown) + .input__label {
       color: colors.$error;
     }
   }
@@ -69,7 +73,8 @@
     position: absolute;
   }
 
-  input:-internal-autofill-selected {
-    background-color: white;
+  // to override default browser autofill styles
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0px 100px colors.$bg inset;
   }
 }

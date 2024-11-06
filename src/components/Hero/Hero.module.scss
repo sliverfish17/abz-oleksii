@@ -29,7 +29,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    object-fit: cover;
+    object-fit: fill;
 
     @include responsive.lg {
       width: 1170px;
@@ -47,6 +47,7 @@
 
     @include responsive.xxs {
       max-width: 328px;
+      margin-top: -31px;
     }
   }
 

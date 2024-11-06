@@ -38,8 +38,9 @@
     border: solid colors.$outline;
     border-width: 1px 1px 1px 0;
     border-radius: 0 4px 4px 0;
-    transition: border-color 0.3s ease-in;
+    transition: border-color 0.2s ease-in;
     @include text.text-s;
+    cursor: pointer;
 
     &_filled {
       color: colors.$text;

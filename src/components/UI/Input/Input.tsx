@@ -10,26 +10,32 @@ interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string;
   register?: UseFormRegisterReturn<string>;
   mask?: string;
+  name: string;
 }
 
 export const Input = ({ label, helperText, error, name, register, mask }: IInputProps) => (
   <div className={styles.input}>
-    <div className={`${styles.input__wrapper} ${error ? 'styles.input__wrapper--error' : ''}`}>
+    <div className={`${styles.input__wrapper} ${error ? styles.input__wrapperError : ''}`}>
       {mask ? (
         <InputMask
+          id={name}
           mask={mask}
           placeholder=" "
-          className={`${styles.input__field} ${error ? 'styles.input__input--error' : ''}`}
+          className={`${styles.input__field} ${error ? styles.input__fieldError : ''}`}
           {...register}
         />
       ) : (
         <input
           {...register}
+          id={name}
           placeholder=" "
-          className={`${styles.input__field} ${error ? 'styles.input__input--error' : ''}`}
+          className={`${styles.input__field} ${error ? styles.input__fieldError : ''}`}
         />
       )}
-      <label htmlFor={name} className={styles.input__label}>
+      <label
+        htmlFor={name}
+        className={`${styles.input__label} ${error ? styles.input__labelError : ''}`}
+      >
         {label}
       </label>
     </div>

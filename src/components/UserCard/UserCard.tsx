@@ -1,6 +1,7 @@
 import fallbackImage from 'assets/icons/user-fallback.svg';
 import { memo, SyntheticEvent } from 'react';
 import { IUser } from 'types/User';
+import { formatPhoneNumber } from 'utils/formatPhone';
 
 import styles from './UserCard.module.scss';
 import { UserInfo } from './UserInfo';
@@ -24,7 +25,7 @@ export const UserCard = memo(({ name, email, position, photo, phone }: IUser) =>
     <div className={styles.card__info}>
       <UserInfo text={position} textLimit={37} />
       <UserInfo text={email} textLimit={37} />
-      <p className={styles.card__text}>{phone}</p>
+      <p className={styles.card__text}>{formatPhoneNumber(phone)}</p>
     </div>
   </div>
 ));

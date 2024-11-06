@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup';
-import { Button, FileUpload, Input, RadioButton } from 'components';
+import { Button, FileUpload, Input, Loader, RadioButton } from 'components';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { registerUser } from 'services/registerUser';
@@ -26,12 +26,12 @@ export const RegistrationForm = ({
     setError,
     setValue,
     reset,
-    formState: { errors, touchedFields, isValid },
+    formState: { errors, touchedFields, isValid, isSubmitting },
     watch,
   } = useForm<IRegistrationFormInputs>({
     defaultValues: { name: '', email: '', phone: '', position_id: positions[0]?.id, photo: null },
     resolver: yupResolver<IRegistrationFormInputs>(registrationSchema),
-    mode: 'onChange',
+    mode: 'onTouched',
   });
 
   const positionId = Number(watch('position_id'));
@@ -66,12 +66,14 @@ export const RegistrationForm = ({
       <div className={styles.registration__formInputs}>
         <Input
           register={register('name')}
+          name="name"
           type="text"
           label="Your name"
           error={(touchedFields.name && errors.name?.message) || ''}
         />
         <Input
           register={register('email')}
+          name="email"
           type="email"
           label="Email"
           error={(touchedFields.email && errors.email?.message) || ''}
@@ -79,6 +81,7 @@ export const RegistrationForm = ({
         <Input
           register={register('phone')}
           type="tel"
+          name="phone"
           label="Phone"
           helperText="+38 (XXX) XXX - XX - XX"
           error={(touchedFields.phone && errors.phone?.message) || ''}
@@ -105,9 +108,13 @@ export const RegistrationForm = ({
         label="Upload your photo"
         error={errors.photo?.message || ''}
       />
-      <Button disabled={!isValid} type="submit" className={styles.registration__submit}>
-        Sign Up
-      </Button>
+      {isSubmitting ? (
+        <Loader />
+      ) : (
+        <Button disabled={!isValid} type="submit" className={styles.registration__submit}>
+          Sign Up
+        </Button>
+      )}
     </form>
   );
 };
