@@ -1,3 +1,5 @@
+import { IApiResponse } from './Api';
+
 export interface IUser {
   id: number;
   name: string;
@@ -5,4 +7,12 @@ export interface IUser {
   phone: string;
   position: string;
   photo: string;
+}
+
+export interface IUserRegistration extends IApiResponse {
+  user_id?: number;
+  message: string;
+  fails?: {
+    [key: string]: string[];
+  };
 }

@@ -3,5 +3,7 @@ export * from './Header/Header';
 export * from './Hero/Hero';
 export * from './Loader/Loader';
 export * from './Registration/Registration';
+export * from './Registration/RegistrationForm';
+export * from './Success/Success';
 export * from './UI';
 export * from './Users/Users';

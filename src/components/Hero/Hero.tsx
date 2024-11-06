@@ -1,5 +1,5 @@
-import Banner from 'assets/images/banner.jpg';
-import { Button, Container } from 'components';
+import Banner from 'assets/images/banner_compressed.webp';
+import { Button } from 'components';
 import { Heading } from 'components/Heading/Heading';
 import { AnchorLinks } from 'types/AnchorLinks';
 
@@ -8,7 +8,7 @@ import styles from './Hero.module.scss';
 export const Hero = () => {
   return (
     <section className={styles.hero}>
-      <Container className={styles.hero__container}>
+      <div className={styles.hero__container}>
         <img className={styles.hero__banner} src={Banner} alt="Banner" />
         <span className={styles.hero__overlay} />
         <div className={styles.hero__content}>
@@ -25,7 +25,7 @@ export const Hero = () => {
             <Button>Sign up</Button>
           </a>
         </div>
-      </Container>
+      </div>
     </section>
   );
 };

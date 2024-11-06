@@ -1,0 +1,11 @@
+.success {
+  &__icon {
+    margin: 0 auto 100px;
+  }
+
+  &__heading {
+    display: flex;
+    margin-bottom: 50px;
+    justify-content: center;
+  }
+}

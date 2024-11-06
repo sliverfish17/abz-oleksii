@@ -1,5 +1,5 @@
-@use "styles/mixins/index.scss" as mixins;
-@use "styles/base/colors" as colors;
+@use 'styles/mixins/index.scss' as mixins;
+@use 'styles/base/colors' as colors;
 
 .header {
   background-color: colors.$white;
@@ -8,9 +8,8 @@
   width: 100%;
   display: flex;
   align-items: center;
-  box-shadow: -1px -1px 5px rgba(0, 0, 0, 0.15),
-    0px 4px 15px rgba(0, 0, 0, 0.15);
-  z-index: 10;
+  box-shadow: -1px -1px 5px rgba(0, 0, 0, 0.15), 0px 4px 15px rgba(0, 0, 0, 0.15);
+  z-index: 20;
 
   &__content {
     display: flex;

@@ -2,8 +2,8 @@ import { Heading } from 'components/Heading/Heading';
 import { Loader } from 'components/Loader/Loader';
 import { Button } from 'components/UI/Button/Button';
 import { UserCard } from 'components/UserCard/UserCard';
+import { useUsersContext } from 'context/UserContext';
 import { useCallback, useEffect, useState } from 'react';
-import { IApiResponse } from 'types/Api';
 import { IUser } from 'types/User';
 import { httpClient } from 'utils/http-client';
 
@@ -11,26 +11,24 @@ import styles from './Users.module.scss';
 
 const COUNT = 6;
 
-interface IUserResponse extends IApiResponse {
-  users: IUser[];
-}
-
 export const Users = () => {
   const [users, setUsers] = useState<IUser[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [page, setPage] = useState<number>(1);
-  const [hasMore, setHasMore] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState(false);
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
 
-  const fetchUsers = useCallback(async (pageNum: number) => {
+  const { refetch, resetRefetch } = useUsersContext();
+
+  const fetchUsers = useCallback(async (pageNum = 1, reset = false) => {
     setIsLoading(true);
     try {
       const url = new URLSearchParams({ page: String(pageNum), count: String(COUNT) });
+      const { users: newUsers, total_pages } = await httpClient.get<{
+        users: IUser[];
+        total_pages: number;
+      }>('/users?' + url.toString());
 
-      const { users: newUsers, total_pages } = await httpClient.get<IUserResponse>(
-        '/users?' + url.toString(),
-      );
-
-      setUsers((prevUsers) => [...prevUsers, ...newUsers]);
+      setUsers((prevUsers) => (reset ? newUsers : [...prevUsers, ...newUsers]));
       setHasMore(pageNum < total_pages);
     } catch (error) {
       console.error('Error fetching users:', error);
@@ -40,16 +38,22 @@ export const Users = () => {
   }, []);
 
   useEffect(() => {
-    if (hasMore) {
-      fetchUsers(page);
-    }
-  }, [fetchUsers, page, hasMore]);
+    fetchUsers();
+  }, [fetchUsers]);
 
-  const loadMore = useCallback(() => {
+  useEffect(() => {
+    if (refetch) {
+      fetchUsers(1, true);
+      resetRefetch();
+    }
+  }, [refetch, fetchUsers, resetRefetch]);
+
+  const loadMore = () => {
     if (hasMore && !isLoading) {
       setPage((prevPage) => prevPage + 1);
+      fetchUsers(page + 1);
     }
-  }, [hasMore, isLoading]);
+  };
 
   return (
     <section id="users" className={styles.users}>

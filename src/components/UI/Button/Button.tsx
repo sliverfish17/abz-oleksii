@@ -1,6 +1,6 @@
-import { ButtonHTMLAttributes, ReactNode } from "react";
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 
-import styles from "./Button.module.scss";
+import styles from './Button.module.scss';
 
 interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
@@ -8,17 +8,13 @@ interface IButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   disabled?: boolean;
 }
 
-export const Button = ({
-  children,
-  className = "",
-  onClick,
-  disabled,
-}: IButton) => {
+export const Button = ({ children, className = '', onClick, disabled, type }: IButton) => {
   return (
     <button
       className={`${styles.button} ${className}`}
       disabled={disabled}
       onClick={onClick}
+      type={type}
     >
       {children}
     </button>

@@ -1,81 +1,51 @@
-import { Button, Input } from 'components';
+import { Loader, RegistrationForm, SuccessMessage } from 'components';
 import { Heading } from 'components/Heading/Heading';
-import { FormProvider, useForm } from 'react-hook-form';
-import { EMAIL_REGEXP, PHONE_REGEXP } from 'utils/regexp';
+import { useUsersContext } from 'context/UserContext';
+import { useEffect, useState } from 'react';
+import { getPositions } from 'services/getPositions';
+import { IPosition } from 'types';
 
 import styles from './Registration.module.scss';
 
-interface IFormInputs {
-  userName: string;
-  email: string;
-  phone: string;
-}
-
 export const Registration = () => {
-  const methods = useForm<IFormInputs>({
-    defaultValues: {
-      userName: '',
-      email: '',
-      phone: '',
-    },
-  });
+  const [isLoading, setIsLoading] = useState(true);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [positions, setPositions] = useState<IPosition[]>([]);
+  const { triggerRefetch } = useUsersContext();
 
-  const onSubmit = (data: IFormInputs) => {
-    console.log('Submitted data:', data);
-  };
+  useEffect(() => {
+    const fetchPositions = async () => {
+      try {
+        const positionsData = await getPositions();
+        setPositions(positionsData);
+      } catch (error) {
+        console.error('Error fetching positions:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchPositions();
+  }, []);
+
+  if (isLoading) return <Loader />;
+  if (!positions.length)
+    return (
+      <Heading className={styles.registration__fallback}>
+        Currently we don&apos;t have any positions!
+      </Heading>
+    );
+  if (isSuccess) return <SuccessMessage />;
 
   return (
-    <section className={styles.registration} id="sign-up">
+    <section className={styles.registration}>
       <Heading className={styles.registration__heading}>Working with POST request</Heading>
-
-      <FormProvider {...methods}>
-        <form onSubmit={methods.handleSubmit(onSubmit)} className={styles.registration__form}>
-          <Input
-            name="userName"
-            type="text"
-            label="Your name"
-            validationRules={{
-              required: 'Name is required',
-              minLength: {
-                value: 2,
-                message: 'Name must be at least 2 characters long',
-              },
-              maxLength: {
-                value: 60,
-                message: 'Name cannot be longer than 60 characters',
-              },
-            }}
-          />
-          <Input
-            name="email"
-            type="email"
-            label="Email"
-            validationRules={{
-              required: 'Email is required',
-              pattern: {
-                value: EMAIL_REGEXP,
-                message: 'Invalid email address',
-              },
-            }}
-          />
-          <Input
-            name="phone"
-            type="tel"
-            label="Phone"
-            helperText="+38 (XXX) XXX - XX - XX"
-            validationRules={{
-              required: 'Phone number is required',
-              pattern: {
-                value: PHONE_REGEXP,
-                message: 'Phone number must start with +380 and be followed by 9 digits',
-              },
-            }}
-          />
-          <Button type="submit" className={styles.registration__submit}>
-            Sign Up
-          </Button>
-        </form>
-      </FormProvider>
+      <RegistrationForm
+        positions={positions}
+        setIsSuccess={setIsSuccess}
+        triggerRefetch={triggerRefetch}
+      />
     </section>
   );
 };
+
+export default Registration;

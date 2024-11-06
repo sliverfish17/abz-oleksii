@@ -1,13 +1,19 @@
-@use "../base/breakpoints" as *;
+@use '../base/breakpoints' as *;
 
 @mixin xs {
-  @media (max-width: $breakpoint-sm) {
+  @media (min-width: '0px') and (max-width: $breakpoint-sm) {
     @content;
   }
 }
 
 @mixin sm {
   @media (min-width: $breakpoint-sm) and (max-width: $breakpoint-md) {
+    @content;
+  }
+}
+
+@mixin xs-md {
+  @media (min-width: $breakpoint-xs) and (max-width: $breakpoint-lg) {
     @content;
   }
 }
@@ -19,13 +25,7 @@
 }
 
 @mixin lg {
-  @media (min-width: $breakpoint-lg) and (max-width: $breakpoint-xl) {
-    @content;
-  }
-}
-
-@mixin xl {
-  @media (min-width: $breakpoint-xl) {
+  @media (min-width: $breakpoint-lg) {
     @content;
   }
 }

@@ -1,14 +1,13 @@
 @use 'styles/base/colors' as colors;
 
 .input {
-  margin-bottom: 20px;
-  width: 328px;
+  width: 380px;
 
   &__wrapper {
     position: relative;
     border: 1px solid colors.$outline;
     border-radius: 4px;
-    padding: 14px 16px;
+    padding: 13px 16px;
     transition: border-color 0.3s ease;
 
     &--error {
@@ -52,14 +51,18 @@
   }
 
   &__helper {
-    margin-top: 4px;
     font-size: 12px;
     color: colors.$input;
+    position: absolute;
   }
 
   &__error {
-    margin-top: 4px;
     font-size: 12px;
     color: colors.$error;
+    position: absolute;
+  }
+
+  input:-internal-autofill-selected {
+    background-color: white;
   }
 }

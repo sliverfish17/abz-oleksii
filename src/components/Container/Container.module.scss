@@ -1,15 +1,15 @@
-@use "styles/mixins/index.scss" as mixins;
+@use 'styles/mixins/index.scss' as mixins;
 
 .container {
   max-width: 1170px;
   width: 100%;
   margin: 0 auto;
 
-  @include mixins.lg {
-    padding: 0 60px;
-  }
   @include mixins.md {
     padding: 0 32px;
+  }
+  @include mixins.xs {
+    padding: 0 16px;
   }
   @include mixins.sm {
     padding: 0 16px;

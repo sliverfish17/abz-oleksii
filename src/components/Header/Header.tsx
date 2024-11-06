@@ -15,7 +15,7 @@ export const Header = () => {
     <header className={styles.header}>
       <Container className={styles.header__content}>
         <a href={AnchorLinks.HOME}>
-          <img src={Logo} alt="Logo" />
+          <img width={104} height={26} src={Logo} alt="Logo" />
         </a>
         <nav className={styles.header__navigation}>
           {HEADER_NAV_LINKS.map((link) => (

@@ -1,0 +1,62 @@
+@use 'styles/base/colors' as colors;
+@use 'styles/mixins/font' as text;
+
+.input {
+  display: none;
+
+  &:hover {
+    border-color: colors.$text;
+  }
+
+  &__wrapper {
+    width: 100%;
+    position: relative;
+    display: flex;
+    margin-bottom: 50px;
+  }
+
+  &__button {
+    color: colors.$text;
+    padding: 13px 14px 13px 15px;
+    border: 1px solid colors.$text;
+    border-radius: 4px 0 0 4px;
+    @include text.text-s;
+
+    &_error {
+      border-color: colors.$error;
+      border-width: 2px;
+    }
+  }
+
+  &__label {
+    flex-grow: 1;
+    color: colors.$input;
+    padding: 13px 14px 13px 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: pre;
+    border: solid colors.$outline;
+    border-width: 1px 1px 1px 0;
+    border-radius: 0 4px 4px 0;
+    transition: border-color 0.3s ease-in-out;
+    @include text.text-s;
+
+    &_filled {
+      color: colors.$text;
+    }
+
+    &_error {
+      border-color: colors.$error;
+      border-width: 2px 2px 2px 0;
+    }
+  }
+
+  &__error {
+    color: colors.$error;
+    position: absolute;
+    top: 59px;
+    left: 16px;
+    font-size: 12px;
+    line-height: 17px;
+  }
+}
