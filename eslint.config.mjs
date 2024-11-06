@@ -20,6 +20,7 @@ export default [
       'simple-import-sort/imports': 'error',
       'simple-import-sort/exports': 'error',
       'react/react-in-jsx-scope': 'off',
+      'react/display-name': 'off',
     },
     settings: {
       react: {

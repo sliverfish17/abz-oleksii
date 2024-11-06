@@ -1,4 +1,5 @@
 import { Tooltip } from 'components';
+import { memo } from 'react';
 
 import styles from './UserCard.module.scss';
 
@@ -8,14 +9,15 @@ interface IUserInfoProps {
   className?: string;
 }
 
-export const UserInfo = ({ textLimit, text, className = '' }: IUserInfoProps) => {
-  if (text.length > textLimit) {
-    return (
-      <Tooltip text={text}>
-        <p className={`${styles.card__text} ${className}`}>{text.slice(0, textLimit) + '...'}</p>
-      </Tooltip>
-    );
-  }
+export const UserInfo = memo(({ textLimit, text, className = '' }: IUserInfoProps) => {
+  const isTextOverflowing = text.length > textLimit;
+  const displayText = isTextOverflowing ? `${text.slice(0, textLimit)}...` : text;
 
-  return <p className={`${styles.card__text} ${className}`}>{text}</p>;
-};
+  return isTextOverflowing ? (
+    <Tooltip text={text}>
+      <p className={`${styles.card__text} ${className}`}>{displayText}</p>
+    </Tooltip>
+  ) : (
+    <p className={`${styles.card__text} ${className}`}>{displayText}</p>
+  );
+});
