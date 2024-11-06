@@ -3,14 +3,11 @@ import { Loader } from 'components/Loader/Loader';
 import { Button } from 'components/UI/Button/Button';
 import { UserCard } from 'components/UserCard/UserCard';
 import { useFetchUsers } from 'hooks/useFetchUsers';
-import { IUser } from 'types';
 
 import styles from './Users.module.scss';
 
 export const Users = () => {
-  const { isLoading, hasMore, loadMore } = useFetchUsers();
-
-  const users: IUser[] = [];
+  const { users, isLoading, hasMore, loadMore } = useFetchUsers();
 
   return (
     <section id="users" className={styles.users}>

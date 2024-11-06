@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { InputHTMLAttributes } from 'react';
 import { UseFormRegisterReturn } from 'react-hook-form';
 
@@ -20,6 +20,7 @@ export const FileUpload = ({
   accept = 'image/jpeg,image/jpg',
 }: IFileUploadProps) => {
   const [fileName, setFileName] = useState(label);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
@@ -41,14 +42,16 @@ export const FileUpload = ({
         type="file"
         multiple={multiple}
         accept={accept}
-        id={register.name}
         {...register}
+        id={register.name}
+        name={register.name}
+        ref={fileInputRef}
         onChange={handleFileChange}
       />
       <button
         className={`${styles.input__button} ${error ? styles.input__button_error : ''}`}
         type="button"
-        onClick={() => document.getElementById(register.name)?.click()}
+        onClick={() => fileInputRef.current?.click()}
       >
         Upload
       </button>
