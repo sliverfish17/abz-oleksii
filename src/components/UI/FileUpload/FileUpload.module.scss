@@ -17,7 +17,7 @@
 
   &__button {
     color: colors.$text;
-    padding: 13px 14px 13px 15px;
+    padding: 13px 14px;
     border: 1px solid colors.$text;
     border-radius: 4px 0 0 4px;
     @include text.text-s;
@@ -31,14 +31,14 @@
   &__label {
     flex-grow: 1;
     color: colors.$input;
-    padding: 13px 14px 13px 12px;
+    padding: 13px 14px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: pre;
     border: solid colors.$outline;
     border-width: 1px 1px 1px 0;
     border-radius: 0 4px 4px 0;
-    transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in;
     @include text.text-s;
 
     &_filled {

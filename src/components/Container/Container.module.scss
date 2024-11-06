@@ -4,6 +4,7 @@
   max-width: 1170px;
   width: 100%;
   margin: 0 auto;
+  overflow-x: hidden;
 
   @include mixins.md {
     padding: 0 32px;
@@ -11,6 +12,7 @@
   @include mixins.xs {
     padding: 0 16px;
   }
+
   @include mixins.sm {
     padding: 0 16px;
   }

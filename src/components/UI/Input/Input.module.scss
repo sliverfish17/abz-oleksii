@@ -1,7 +1,12 @@
 @use 'styles/base/colors' as colors;
+@use 'styles/mixins/responsive' as responsive;
 
 .input {
   width: 380px;
+
+  @include responsive.xxs {
+    width: 328px;
+  }
 
   &__wrapper {
     position: relative;
@@ -18,7 +23,7 @@
   &__label {
     position: absolute;
     top: 50%;
-    left: 16px;
+    left: 12px;
     transform: translateY(-50%);
     background: colors.$bg;
     padding: 0 4px;
@@ -52,6 +57,8 @@
 
   &__helper {
     font-size: 12px;
+    margin-top: -6px;
+    margin-left: 16px;
     color: colors.$input;
     position: absolute;
   }

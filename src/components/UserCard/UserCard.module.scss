@@ -13,15 +13,15 @@
   gap: 20px;
 
   @include responsive.xs {
-    max-width: 100%;
+    width: 100%;
   }
 
   @include responsive.sm {
-    max-width: 344px;
+    width: 344px;
   }
 
   @include responsive.md {
-    max-width: 282px;
+    width: 282px;
   }
 
   @include responsive.lg {

@@ -21,23 +21,19 @@
       gap: 20px;
     }
 
-    @include responsive.sm {
+    @include responsive.sm-md {
       grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
 
-    @include responsive.md {
-      grid-template-columns: repeat(3, 1fr);
-      gap: 29px;
-    }
-
-    @include responsive.lg {
+    @include responsive.md-xl {
       grid-template-columns: repeat(3, 1fr);
       gap: 29px;
     }
   }
 
   &__button {
+    width: 120px;
     margin: 0 auto;
   }
 

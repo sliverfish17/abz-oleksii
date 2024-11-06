@@ -87,16 +87,18 @@ export const RegistrationForm = ({
       </div>
       <div className={styles.registration__positions}>
         <p className={styles.registration__positionsHeading}>Select your position</p>
-        {positions.map((position) => (
-          <RadioButton
-            register={register('position_id')}
-            label={position.name}
-            value={position.id}
-            key={position.id}
-            error={errors.position_id?.message}
-            selected={positionId}
-          />
-        ))}
+        <div className={styles.registration__positionsList}>
+          {positions.map((position) => (
+            <RadioButton
+              register={register('position_id')}
+              label={position.name}
+              value={position.id}
+              key={position.id}
+              error={errors.position_id?.message}
+              selected={positionId}
+            />
+          ))}
+        </div>
       </div>
       <FileUpload
         register={register('photo')}

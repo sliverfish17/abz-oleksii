@@ -2,8 +2,10 @@
 @use 'styles/mixins/font' as mixins;
 
 .button {
-  padding: 4px 23px;
+  padding: 4px 8px;
   border-radius: 80px;
+  width: 100px;
+  height: 34px;
   background-color: colors.$main;
   transition: background-color 0.3s ease-in;
   color: colors.$text;
