@@ -18,7 +18,8 @@
     "build": "react-scripts build",
     "lint": "eslint src",
     "lint:fix": "eslint src --fix",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "eject": "react-scripts eject"
   },
   "browserslist": {
     "production": [
