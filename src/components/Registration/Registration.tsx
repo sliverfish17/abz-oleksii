@@ -21,7 +21,7 @@ export const Registration = () => {
       } catch (error) {
         console.error('Error fetching positions:', error);
       } finally {
-        setIsLoading(true);
+        setIsLoading(false);
       }
     };
     fetchPositions();
