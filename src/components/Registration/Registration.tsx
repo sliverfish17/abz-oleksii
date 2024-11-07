@@ -21,13 +21,13 @@ export const Registration = () => {
       } catch (error) {
         console.error('Error fetching positions:', error);
       } finally {
-        setIsLoading(false);
+        setIsLoading(true);
       }
     };
     fetchPositions();
   }, []);
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return <Loader className={styles.registration__loader} />;
 
   if (!positions.length)
     return (
